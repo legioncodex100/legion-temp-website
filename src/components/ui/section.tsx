@@ -1,0 +1,32 @@
+import { cn } from "@/lib/utils";
+
+interface SectionProps extends React.HTMLAttributes<HTMLElement> {
+    children: React.ReactNode;
+    fullWidth?: boolean;
+}
+
+export function Section({
+    children,
+    className,
+    fullWidth = false,
+    ...props
+}: SectionProps) {
+    return (
+        <section
+            className={cn(
+                "py-16 md:py-24",
+                className
+            )}
+            {...props}
+        >
+            <div
+                className={cn(
+                    "container mx-auto px-4 md:px-6",
+                    fullWidth && "max-w-none px-0"
+                )}
+            >
+                {children}
+            </div>
+        </section>
+    );
+}
