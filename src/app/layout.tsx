@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     },
 };
 
+import { GlobalAlert } from "@/components/layout/global-alert";
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -55,6 +57,8 @@ export default function RootLayout({
             <body className={`${outfit.variable} ${plusJakartaSans.variable} font-body bg-black text-white antialiased flex flex-col min-h-screen relative overflow-x-hidden`}>
                 {/* Grain Texture Overlay */}
                 <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+                <GlobalAlert />
 
                 {/* Mindbody/Healcode Script */}
                 <Script
