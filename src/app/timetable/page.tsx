@@ -3,6 +3,8 @@
 import { Section } from "@/components/ui/section";
 import Script from "next/script";
 
+import { RamadanTimetable } from "@/components/features/ramadan-timetable";
+
 export default function TimetablePage() {
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
@@ -18,6 +20,9 @@ export default function TimetablePage() {
                         Browse all classes below and book directly through our integrated system. Filter by class type or day to find your session.
                     </p>
                 </div>
+
+                {/* Ramadan Schedule (Temporary) */}
+                <RamadanTimetable />
 
                 {/* Mindbody Widget Container */}
                 <div className="w-full min-h-[600px] overflow-hidden">
