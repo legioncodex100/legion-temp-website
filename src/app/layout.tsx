@@ -58,13 +58,16 @@ export default function RootLayout({
                 {/* Grain Texture Overlay */}
                 <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-                <GlobalAlert />
+
 
                 {/* Mindbody/Healcode Script */}
                 <Script
                     src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
                     strategy="afterInteractive"
                 />
+
+                <Header />
+                <GlobalAlert />
 
                 {/* Bowtie.ai Chat Widget */}
                 <Script id="bowtie-widget" strategy="afterInteractive">
