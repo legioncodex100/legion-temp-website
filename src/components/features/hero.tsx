@@ -8,6 +8,29 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HERO_SLIDES } from "@/data/hero-slides";
 
+import React, { memo } from "react";
+
+// Memoized Healcode Widget to prevent re-renders when parent state changes (e.g., image slider)
+const HealcodeWidget = memo(() => (
+    <div
+        className="[&_.healcode-pricing-option-text-link]:bg-white [&_.healcode-pricing-option-text-link]:text-black [&_.healcode-pricing-option-text-link]:hover:bg-black [&_.healcode-pricing-option-text-link]:hover:text-white [&_.healcode-pricing-option-text-link]:border [&_.healcode-pricing-option-text-link]:border-white [&_.healcode-pricing-option-text-link]:h-12 [&_.healcode-pricing-option-text-link]:px-6 [&_.healcode-pricing-option-text-link]:text-[10px] [&_.healcode-pricing-option-text-link]:font-black [&_.healcode-pricing-option-text-link]:uppercase [&_.healcode-pricing-option-text-link]:tracking-[0.2em] [&_.healcode-pricing-option-text-link]:rounded-none [&_.healcode-pricing-option-text-link]:transition-all [&_.healcode-pricing-option-text-link]:duration-300 [&_.healcode-pricing-option-text-link]:inline-flex [&_.healcode-pricing-option-text-link]:items-center [&_.healcode-pricing-option-text-link]:justify-center"
+        dangerouslySetInnerHTML={{
+            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="8337" data-mb-site-id="137536" data-service-id="10423" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="START A FREE TRIAL (16+)" />`
+        }}
+    />
+));
+HealcodeWidget.displayName = "HealcodeWidget";
+
+const MobileHealcodeWidget = memo(() => (
+    <div
+        className="[&_.healcode-pricing-option-text-link]:bg-white [&_.healcode-pricing-option-text-link]:text-black [&_.healcode-pricing-option-text-link]:hover:bg-black [&_.healcode-pricing-option-text-link]:hover:text-white [&_.healcode-pricing-option-text-link]:border [&_.healcode-pricing-option-text-link]:border-white [&_.healcode-pricing-option-text-link]:h-14 [&_.healcode-pricing-option-text-link]:w-full [&_.healcode-pricing-option-text-link]:px-6 [&_.healcode-pricing-option-text-link]:text-[10px] [&_.healcode-pricing-option-text-link]:font-black [&_.healcode-pricing-option-text-link]:uppercase [&_.healcode-pricing-option-text-link]:tracking-[0.2em] [&_.healcode-pricing-option-text-link]:rounded-none [&_.healcode-pricing-option-text-link]:transition-all [&_.healcode-pricing-option-text-link]:duration-300 [&_.healcode-pricing-option-text-link]:flex [&_.healcode-pricing-option-text-link]:items-center [&_.healcode-pricing-option-text-link]:justify-center"
+        dangerouslySetInnerHTML={{
+            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="8337" data-mb-site-id="137536" data-service-id="10423" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="START A FREE TRIAL (16+)" />`
+        }}
+    />
+));
+MobileHealcodeWidget.displayName = "MobileHealcodeWidget";
+
 export function Hero() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -99,12 +122,7 @@ export function Hero() {
                                 East London’s most vibrant home for Wrestling, Jiu Jitsu, Judo, and MMA. A high-energy, supportive space where adults find their potential and children build a foundation for life.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-700">
-                                <div
-                                    className="[&_.healcode-pricing-option-text-link]:bg-white [&_.healcode-pricing-option-text-link]:text-black [&_.healcode-pricing-option-text-link]:hover:bg-black [&_.healcode-pricing-option-text-link]:hover:text-white [&_.healcode-pricing-option-text-link]:border [&_.healcode-pricing-option-text-link]:border-white [&_.healcode-pricing-option-text-link]:h-12 [&_.healcode-pricing-option-text-link]:px-6 [&_.healcode-pricing-option-text-link]:text-[10px] [&_.healcode-pricing-option-text-link]:font-black [&_.healcode-pricing-option-text-link]:uppercase [&_.healcode-pricing-option-text-link]:tracking-[0.2em] [&_.healcode-pricing-option-text-link]:rounded-none [&_.healcode-pricing-option-text-link]:transition-all [&_.healcode-pricing-option-text-link]:duration-300 [&_.healcode-pricing-option-text-link]:inline-flex [&_.healcode-pricing-option-text-link]:items-center [&_.healcode-pricing-option-text-link]:justify-center"
-                                    dangerouslySetInnerHTML={{
-                                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="8337" data-mb-site-id="137536" data-service-id="10423" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="START A FREE TRIAL (16+)" />`
-                                    }}
-                                />
+                                <HealcodeWidget />
                                 <Link href="/free-trial/kids">
                                     <Button size="lg" variant="outline" className="text-white border-white bg-transparent hover:bg-white hover:text-black h-12 px-6 text-[10px] font-black uppercase tracking-[0.2em] rounded-none transition-all duration-300">
                                         KIDS & TEENS INTRO (&lt;16)
@@ -149,12 +167,7 @@ export function Hero() {
                         East London’s most vibrant home for Wrestling, Jiu Jitsu, Judo, and MMA. A high-energy, supportive space where adults find their potential and children build a foundation for life.
                     </p>
                     <div className="flex flex-col gap-4">
-                        <div
-                            className="[&_.healcode-pricing-option-text-link]:bg-white [&_.healcode-pricing-option-text-link]:text-black [&_.healcode-pricing-option-text-link]:hover:bg-black [&_.healcode-pricing-option-text-link]:hover:text-white [&_.healcode-pricing-option-text-link]:border [&_.healcode-pricing-option-text-link]:border-white [&_.healcode-pricing-option-text-link]:h-14 [&_.healcode-pricing-option-text-link]:w-full [&_.healcode-pricing-option-text-link]:px-6 [&_.healcode-pricing-option-text-link]:text-[10px] [&_.healcode-pricing-option-text-link]:font-black [&_.healcode-pricing-option-text-link]:uppercase [&_.healcode-pricing-option-text-link]:tracking-[0.2em] [&_.healcode-pricing-option-text-link]:rounded-none [&_.healcode-pricing-option-text-link]:transition-all [&_.healcode-pricing-option-text-link]:duration-300 [&_.healcode-pricing-option-text-link]:flex [&_.healcode-pricing-option-text-link]:items-center [&_.healcode-pricing-option-text-link]:justify-center"
-                            dangerouslySetInnerHTML={{
-                                __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="8337" data-mb-site-id="137536" data-service-id="10423" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="START A FREE TRIAL (16+)" />`
-                            }}
-                        />
+                        <MobileHealcodeWidget />
                         <Link href="/free-trial/kids" className="w-full">
                             <Button size="lg" variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 font-black uppercase tracking-widest h-14 rounded-none">
                                 KIDS & TEENS INTRO (&lt;16)
