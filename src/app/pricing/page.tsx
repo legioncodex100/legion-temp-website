@@ -229,6 +229,12 @@ export default function PricingPage() {
                                                     <span>{feature}</span>
                                                 </li>
                                             ))}
+                                            {/* Expiry Warning for Packs */}
+                                            {option.name.includes("Pack") && (
+                                                <li className="flex items-start gap-2 text-white/50 text-xs font-bold uppercase tracking-wider mt-4 pt-4 border-t border-white/10">
+                                                    <span>Sessions expire monthly (no rollover)</span>
+                                                </li>
+                                            )}
                                         </ul>
 
                                         {/* Healcode Widget */}
