@@ -1,7 +1,6 @@
 import { getGoogleReviews } from "@/actions/get-google-reviews";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import { ReviewCard } from "./review-card"; // Breaking out for cleaner code? No, let's keep it inline for now to save files and context.
 
 export async function GoogleReviews() {
     const reviews = await getGoogleReviews();
