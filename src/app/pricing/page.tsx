@@ -258,16 +258,10 @@ export default function PricingPage() {
                         <AccordionItem value="item-2" className="border-zinc-800">
                             <AccordionTrigger className="text-white font-bold hover:text-white/80">What's the difference between PAYG and Packs?</AccordionTrigger>
                             <AccordionContent className="text-white/60">
-                                Pay As You Go lets you pay per class with no commitment. Packs give you a set number of sessions per month at a discounted rate via auto-pay.
+                                Pay As You Go lets you pay per class with no commitment. Packs give you a set number of sessions per month at a discounted rate. Please note, unused classes do not roll over and expire at the end of the month.
                             </AccordionContent>
                         </AccordionItem>
-                        <AccordionItem value="item-3" className="border-zinc-800">
-                            <AccordionTrigger className="text-white font-bold hover:text-white/80">Do you offer student or family discounts?</AccordionTrigger>
-                            <AccordionContent className="text-white/60">
-                                Yes. We offer 10% off for full-time students with valid ID, and family discounts for 2+ siblings. Speak to us at the academy.
-                            </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="item-4" className="border-zinc-800">
+                        <AccordionItem value="item-3" className="border-b border-white/10 px-4">
                             <AccordionTrigger className="text-white font-bold hover:text-white/80">How do I cancel my membership?</AccordionTrigger>
                             <AccordionContent className="text-white/60">
                                 Email us or speak to reception with 30 days notice. We'll cancel your auto-pay at the end of your billing cycle.
