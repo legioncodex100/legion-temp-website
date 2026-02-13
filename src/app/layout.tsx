@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         template: "%s | Legion Grappling Academy"
     },
     description: "The premier wrestling and BJJ academy in East London (E10). Expert coaching in Brazilian Jiu Jitsu, Wrestling, and MMA for adults and youth.",
-    metadataBase: new URL('https://legiongrappling.com'), // Replace with actual domain
+    metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://legiongrappling.com'),
     openGraph: {
         type: 'website',
         locale: 'en_GB',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         siteName: 'Legion Grappling Academy',
         images: [
             {
-                url: '/images/og-image.jpg', // Needs to be created
+                url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Legion Grappling Academy',
