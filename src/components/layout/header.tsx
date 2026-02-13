@@ -42,10 +42,7 @@ export function Header() {
 
                         {/* Dropdown Container */}
                         <div className="absolute top-full left-1/2 -translate-x-1/2 w-[90vw] max-w-5xl bg-black border border-white/10 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-40">
-                            {/* Top Bar Enrolment */}
-                            <div className="w-full bg-white text-black py-2 px-6 text-center text-[10px] font-bold uppercase tracking-widest">
-                                Enrollment Open for 2025. Get your 7-Day Access Pass.
-                            </div>
+
 
                             <div className="grid grid-cols-4 gap-8 p-12">
                                 {/* MEN */}
