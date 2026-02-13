@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         siteName: 'Legion Grappling Academy',
         images: [
             {
-                url: '/images/og-image.jpg',
+                url: '/images/og-social.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Legion Grappling Academy',
