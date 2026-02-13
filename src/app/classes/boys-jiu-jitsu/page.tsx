@@ -32,7 +32,7 @@ export default function BoysBJJPage() {
         <div className="flex flex-col min-h-screen bg-black text-white">
             {/* 1. HERO SECTION */}
             {/* 1. HERO SECTION - Mobile: Text at bottom, Desktop: Center */}
-            <section className="relative min-h-[80vh] flex items-end md:items-center justify-center overflow-hidden bg-zinc-950 pt-20 pb-20 md:pb-0">
+            <section className="relative min-h-[80vh] flex items-end md:items-center justify-center overflow-hidden bg-zinc-950 pt-32 pb-20 md:pb-0">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 opacity-40">
                     <Image
@@ -57,7 +57,7 @@ export default function BoysBJJPage() {
                     <p className="hidden md:block text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed mb-8 md:mb-10">
                         Give your son the Legion advantage. A high-energy, supportive environment where boys build life-long confidence and problem-solving skills through our structured Youth Jiu Jitsu syllabus.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link href="/free-trial/kids">
                             <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest px-8 h-14 text-xs rounded-none">
                                 CLAIM A FREE YOUTH TRIAL
@@ -67,6 +67,37 @@ export default function BoysBJJPage() {
                     <p className="hidden md:block mt-6 text-sm text-zinc-500 max-w-md mx-auto">
                         <span className="text-white font-bold uppercase text-xs tracking-wider block mb-1">Parent Note</span>
                         Family-First Management. Register, sign waivers, and book classes for all your children from one simple, shared profile.
+                    </p>
+
+                    <div className="hidden md:flex mt-6 flex-col items-center gap-2">
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-600">Member of</span>
+                        <div className="relative w-24 h-24 opacity-60 hover:opacity-100 transition-opacity">
+                            <Image
+                                src="/images/affiliations/ukbjja.png"
+                                alt="UKBJJA"
+                                fill
+                                className="object-contain brightness-0 invert"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Mobile-Only Text Section */}
+            <section className="md:hidden bg-zinc-950 px-6 py-12 border-b border-white/10 relative z-20">
+                <div className="max-w-xl mx-auto text-center">
+                    <p className="text-base text-zinc-300 font-medium leading-relaxed mb-8">
+                        Give your son the Legion advantage. A high-energy, supportive environment where boys build life-long confidence and problem-solving skills through our structured Youth Jiu Jitsu syllabus.
+                    </p>
+                    <div className="flex flex-col gap-4">
+                        <Link href="/free-trial/kids" className="w-full">
+                            <Button size="lg" className="w-full bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest h-14 rounded-none">
+                                CLAIM A FREE YOUTH TRIAL
+                            </Button>
+                        </Link>
+                    </div>
+                    <p className="mt-8 text-sm text-zinc-500 flex items-center justify-center gap-2">
+                        <span className="text-zinc-400 uppercase tracking-widest text-xs">Family-First Management. One shared profile for all kids.</span>
                     </p>
                 </div>
             </section>

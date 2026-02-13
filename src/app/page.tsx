@@ -5,10 +5,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { YouthImageCycler } from "@/components/features/youth-image-cycler";
+import { LadiesAndGirls } from "@/components/features/ladies-and-girls";
+import { GoogleReviews } from "@/components/features/google-reviews";
+import { SchemaOrg } from "@/components/seo/schema-org";
 
 export default function Home() {
     return (
         <div className="flex flex-col w-full bg-black min-h-screen">
+            <SchemaOrg />
             {/* 1. Hero Section - Typographic Brutalism */}
             <Hero />
 
@@ -115,33 +119,13 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* 6. Testimonials (Social Proof) */}
-            <section className="bg-black py-24 px-6 border-b border-white/10">
-                <div className="max-w-[1200px] mx-auto text-center mb-16">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-white/40 block mb-6">
-                        The Legion Community
-                    </span>
-                    <h2 className="font-heading text-3xl md:text-5xl font-black uppercase tracking-tight text-white">
-                        What Our Members Say
-                    </h2>
-                </div>
-                <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="p-8 border border-white/10 bg-zinc-950/50">
-                        <p className="text-zinc-300 italic mb-6 leading-relaxed">"I was nervous to start, but the vibe here is so welcoming. It’s structured, but there’s no ego—everyone just wants to help you get better."</p>
-                        <div className="text-white font-bold uppercase text-xs tracking-widest">— Adult Member</div>
-                    </div>
-                    <div className="p-8 border border-white/10 bg-zinc-950/50">
-                        <p className="text-zinc-300 italic mb-6 leading-relaxed">"My daughter absolutely loves the girls-only Judo class. She’s made great friends and her confidence has skyrocketed."</p>
-                        <div className="text-white font-bold uppercase text-xs tracking-widest">— Local Parent</div>
-                    </div>
-                    <div className="p-8 border border-white/10 bg-zinc-950/50">
-                        <p className="text-zinc-300 italic mb-6 leading-relaxed">"High-level coaching with a real community feel. The E10 facility is top-tier."</p>
-                        <div className="text-white font-bold uppercase text-xs tracking-widest">— MMA Student</div>
-                    </div>
-                </div>
-            </section>
+            {/* 6. Ladies & Girls Dedicated Section */}
+            <LadiesAndGirls />
 
-            {/* 7. The Journey */}
+            {/* 7. Reviews */}
+            <GoogleReviews />
+
+            {/* 8. The Journey */}
             <section className="bg-zinc-950 py-32 border-b border-white/10">
                 <div className="max-w-[1400px] mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-24">
@@ -155,7 +139,7 @@ export default function Home() {
                             <p className="text-zinc-400 max-w-md">We’ve removed the admin hurdles so you can focus on the training.</p>
                         </div>
 
-                        <Link href="/free-trial/adults">
+                        <Link href="/pricing">
                             <Button className="bg-white text-black hover:bg-white/80 rounded-none h-14 px-8 uppercase font-bold tracking-widest mt-8 md:mt-0">
                                 Start Training
                             </Button>

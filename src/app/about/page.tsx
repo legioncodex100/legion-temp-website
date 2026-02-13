@@ -7,7 +7,7 @@ import { ClassGallery } from "@/components/features/class-gallery";
 
 export default function AboutPage() {
     return (
-        <main className="flex flex-col min-h-screen bg-black text-white pt-24">
+        <main className="flex flex-col min-h-screen bg-black text-white pt-32 md:pt-24">
             {/* Hero Section */}
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-zinc-900 z-0">

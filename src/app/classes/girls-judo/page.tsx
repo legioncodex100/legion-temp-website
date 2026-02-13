@@ -18,7 +18,7 @@ export default function GirlsJudoPage() {
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-zinc-950 pt-20">
+            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-zinc-950 pt-32">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 opacity-40">
                     <Image
@@ -38,16 +38,47 @@ export default function GirlsJudoPage() {
                     <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.9]">
                         Balance.<br />Coordination. Confidence.
                     </h1>
-                    <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed mb-10">
+                    <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed mb-10 hidden md:block">
                         Give your daughter the Legion advantage. A dedicated, strictly male-free environment where girls build a strong physical foundation through the official British Judo Association (BJA) syllabus.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button className="bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest px-8 h-14 text-xs rounded-none">
                             CLAIM A FREE GIRLS TRIAL
                         </Button>
                     </div>
-                    <p className="mt-8 text-sm text-zinc-500 max-w-md mx-auto flex items-center justify-center gap-2">
+                    <p className="mt-8 text-sm text-zinc-500 max-w-md mx-auto hidden md:flex items-center justify-center gap-2">
                         <Users className="w-4 h-4 text-pink-500" />
+                        <span className="text-zinc-400 uppercase tracking-widest text-xs">Family-First Management. One shared profile for all kids.</span>
+                    </p>
+
+                    <div className="mt-6 hidden md:flex flex-col items-center gap-2">
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-600">Affiliated with</span>
+                        <div className="relative w-24 h-16 opacity-60 hover:opacity-100 transition-opacity">
+                            <Image
+                                src="/images/affiliations/british-judo.svg"
+                                alt="British Judo Association"
+                                fill
+                                className="object-contain brightness-0 invert"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Mobile-Only Text Section */}
+            <section className="md:hidden bg-zinc-950 px-6 py-12 border-b border-white/10 relative z-20">
+                <div className="max-w-xl mx-auto text-center">
+                    <p className="text-base text-zinc-300 font-medium leading-relaxed mb-8">
+                        Give your daughter the Legion advantage. A dedicated, strictly male-free environment where girls build a strong physical foundation through the official British Judo Association (BJA) syllabus.
+                    </p>
+                    <div className="flex flex-col gap-4">
+                        <Link href="/free-trial/kids" className="w-full">
+                            <Button size="lg" className="w-full bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest h-14 rounded-none">
+                                CLAIM A FREE GIRLS TRIAL
+                            </Button>
+                        </Link>
+                    </div>
+                    <p className="mt-8 text-sm text-zinc-500 flex items-center justify-center gap-2">
                         <span className="text-zinc-400 uppercase tracking-widest text-xs">Family-First Management. One shared profile for all kids.</span>
                     </p>
                 </div>

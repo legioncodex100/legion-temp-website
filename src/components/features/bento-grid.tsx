@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface ClassItem {
@@ -53,6 +53,23 @@ export function BentoGrid() {
     const [activeCategory, setActiveCategory] = useState<CategoryKey>("mens");
     const scrollRef = useRef<HTMLDivElement>(null);
 
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+
+    const checkScroll = () => {
+        if (scrollRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+            setCanScrollLeft(scrollLeft > 0);
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
+        }
+    };
+
+    useEffect(() => {
+        checkScroll();
+        window.addEventListener("resize", checkScroll);
+        return () => window.removeEventListener("resize", checkScroll);
+    }, []);
+
     const scroll = (direction: "left" | "right") => {
         if (scrollRef.current) {
             const scrollAmount = 380;
@@ -60,11 +77,42 @@ export function BentoGrid() {
                 left: direction === "left" ? -scrollAmount : scrollAmount,
                 behavior: "smooth"
             });
+            setTimeout(checkScroll, 300);
         }
     };
 
     const categories = Object.keys(CLASS_CATEGORIES) as CategoryKey[];
     const currentClasses = CLASS_CATEGORIES[activeCategory].classes;
+
+    const tabsRef = useRef<HTMLDivElement>(null);
+    const [canScrollTabsLeft, setCanScrollTabsLeft] = useState(false);
+    const [canScrollTabsRight, setCanScrollTabsRight] = useState(true);
+
+    const checkTabsScroll = () => {
+        if (tabsRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = tabsRef.current;
+            setCanScrollTabsLeft(scrollLeft > 0);
+            setCanScrollTabsRight(scrollLeft < scrollWidth - clientWidth - 5); // 5px tolerance
+        }
+    };
+
+    useEffect(() => {
+        checkTabsScroll();
+        window.addEventListener("resize", checkTabsScroll);
+        return () => window.removeEventListener("resize", checkTabsScroll);
+    }, []);
+
+    const scrollTabs = (direction: "left" | "right") => {
+        if (tabsRef.current) {
+            const scrollAmount = 200;
+            tabsRef.current.scrollBy({
+                left: direction === "left" ? -scrollAmount : scrollAmount,
+                behavior: "smooth"
+            });
+            // Check scroll state after animation (approximate)
+            setTimeout(checkTabsScroll, 300);
+        }
+    };
 
     return (
         <section className="w-full bg-black py-24 px-6 lg:px-12 overflow-hidden">
@@ -75,43 +123,83 @@ export function BentoGrid() {
                 </span>
                 <h2 className="font-heading font-black text-5xl md:text-7xl lg:text-8xl uppercase tracking-[-0.05em] text-white leading-none">
                     Select Your <br />
-                    Weapon.
+                    Discipline.
                 </h2>
             </div>
 
-            {/* Category Tabs */}
-            <div className="flex items-center gap-1 mb-10 border-b border-white/10 pb-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
-                {categories.map((key, idx) => (
+            {/* Category Tabs Wrapper */}
+            <div className="relative group/tabs mb-10 w-full max-w-3xl">
+                {/* Left Arrow */}
+                {canScrollTabsLeft && (
                     <button
-                        key={key}
-                        onClick={() => setActiveCategory(key)}
-                        className={cn(
-                            "px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105",
-                            activeCategory === key
-                                ? "bg-white text-black"
-                                : "bg-transparent text-white/50 hover:text-white border border-white/10 hover:border-white/30"
-                        )}
-                        style={{ animationDelay: `${idx * 50}ms` }}
+                        onClick={() => scrollTabs("left")}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 h-8 w-8 bg-black/80 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 active:scale-95 md:hidden animate-in fade-in zoom-in duration-300"
                     >
-                        {CLASS_CATEGORIES[key].label}
+                        <ChevronLeft className="h-4 w-4 text-white" />
                     </button>
-                ))}
+                )}
+
+                {/* Right Arrow */}
+                {canScrollTabsRight && (
+                    <button
+                        onClick={() => scrollTabs("right")}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 h-8 w-8 bg-black/80 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 active:scale-95 md:hidden animate-in fade-in zoom-in duration-300"
+                    >
+                        <ChevronRight className="h-4 w-4 text-white" />
+                    </button>
+                )}
+
+                {/* Gradient Fades for Mobile */}
+                <div className={cn("absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300", canScrollTabsLeft ? "opacity-100" : "opacity-0")} />
+                <div className={cn("absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300", canScrollTabsRight ? "opacity-100" : "opacity-0")} />
+
+                {/* Tabs Container */}
+                <div
+                    ref={tabsRef}
+                    onScroll={checkTabsScroll}
+                    className="flex items-center gap-1 border-b border-white/10 pb-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 overflow-x-auto scrollbar-hide w-full scroll-smooth"
+                >
+                    {categories.map((key, idx) => (
+                        <button
+                            key={key}
+                            onClick={() => setActiveCategory(key)}
+                            className={cn(
+                                "px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 transform hover:scale-105 shrink-0 whitespace-nowrap",
+                                activeCategory === key
+                                    ? "bg-white text-black"
+                                    : "bg-transparent text-white/50 hover:text-white border border-white/10 hover:border-white/30"
+                            )}
+                            style={{ animationDelay: `${idx * 50}ms` }}
+                        >
+                            {CLASS_CATEGORIES[key].label}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Scrollable Cards */}
             <div className="relative group/container">
+
+
+                {/* Scroll Buttons */}
                 {/* Scroll Buttons */}
                 <button
                     onClick={() => scroll("left")}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-20 h-14 w-14 bg-black/90 backdrop-blur-sm border border-white/20 flex items-center justify-center opacity-0 group-hover/container:opacity-100 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110"
+                    className={cn(
+                        "absolute left-0 top-1/2 -translate-y-1/2 z-20 h-14 w-14 bg-black/90 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110",
+                        !canScrollLeft ? "opacity-0 pointer-events-none" : "opacity-100"
+                    )}
                 >
-                    <ChevronLeft className="h-6 w-6" />
+                    <ChevronLeft className="h-6 w-6 text-white hover:text-black" />
                 </button>
                 <button
                     onClick={() => scroll("right")}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-20 h-14 w-14 bg-black/90 backdrop-blur-sm border border-white/20 flex items-center justify-center opacity-0 group-hover/container:opacity-100 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110"
+                    className={cn(
+                        "absolute right-0 top-1/2 -translate-y-1/2 z-20 h-14 w-14 bg-black/90 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110",
+                        !canScrollRight ? "opacity-0 pointer-events-none" : "opacity-100"
+                    )}
                 >
-                    <ChevronRight className="h-6 w-6" />
+                    <ChevronRight className="h-6 w-6 text-white hover:text-black" />
                 </button>
 
                 {/* Gradient Fades */}
@@ -121,6 +209,7 @@ export function BentoGrid() {
                 {/* Scrollable Container */}
                 <div
                     ref={scrollRef}
+                    onScroll={checkScroll}
                     className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth px-8"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >

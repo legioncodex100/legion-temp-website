@@ -18,7 +18,7 @@ export default function WomensBJJPage() {
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
             {/* 1. HERO SECTION */}
-            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-zinc-950 pt-20">
+            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-zinc-950 pt-32">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 opacity-40">
                     <Image
@@ -38,13 +38,29 @@ export default function WomensBJJPage() {
                     <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.9]">
                         Technical Mastery.<br />Absolute Privacy.
                     </h1>
-                    <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed mb-10">
+                    <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto font-medium leading-relaxed mb-10 hidden md:block">
                         Master the art of Brazilian Jiu Jitsu in a strictly male-free, closed-mat environment. A structured, technical program designed for women seeking empowerment, self-defense, and elite-level fitness.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button className="bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest px-8 h-14 text-xs rounded-none">
                             BOOK A FREE ADULT TRIAL
                         </Button>
+                    </div>
+                </div>
+            </section>
+
+            {/* Mobile-Only Text Section */}
+            <section className="md:hidden bg-zinc-950 px-6 py-12 border-b border-white/10 relative z-20">
+                <div className="max-w-xl mx-auto text-center">
+                    <p className="text-base text-zinc-300 font-medium leading-relaxed mb-8">
+                        Master the art of Brazilian Jiu Jitsu in a strictly male-free, closed-mat environment. A structured, technical program designed for women seeking empowerment, self-defense, and elite-level fitness.
+                    </p>
+                    <div className="flex flex-col gap-4">
+                        <Link href="/free-trial/adults" className="w-full">
+                            <Button size="lg" className="w-full bg-white text-black hover:bg-white/90 font-black uppercase tracking-widest h-14 rounded-none">
+                                BOOK A FREE ADULT TRIAL
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -61,6 +77,18 @@ export default function WomensBJJPage() {
                     <p className="text-zinc-400 mt-6 max-w-2xl mx-auto text-lg">
                         Our Ladies-Only Jiu Jitsu program is built for women who value a focused, ego-free, and private training space.
                     </p>
+
+                    <div className="mt-6 flex flex-col items-center gap-2">
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-600">Member of</span>
+                        <div className="relative w-24 h-24 opacity-60 hover:opacity-100 transition-opacity">
+                            <Image
+                                src="/images/affiliations/ukbjja.png"
+                                alt="UKBJJA"
+                                fill
+                                className="object-contain brightness-0 invert"
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
