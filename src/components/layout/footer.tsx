@@ -61,7 +61,7 @@ export function Footer() {
                             <li><Link href="/timetable" className="hover:text-white">Timetable</Link></li>
                             <li><Link href="/pricing" className="hover:text-white">Pricing</Link></li>
                             <li><Link href="/about" className="hover:text-white">About Us</Link></li>
-                            <li><a href="mailto:info@legion.com" className="hover:text-white">Contact</a></li>
+                            <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
                         </ul>
                     </div>
 
@@ -73,12 +73,8 @@ export function Footer() {
                                 <span>Unit 5 Transform House,<br />16 Wellington Road,<br />London E10 7QF</span>
                             </li>
                             <li className="flex items-center gap-2">
-                                <Mail className="h-4 w-4 text-white" />
-                                <a href="mailto:info@legion.com" className="hover:text-white">info@legion.com</a>
-                            </li>
-                            <li className="flex items-center gap-2">
                                 <Phone className="h-4 w-4 text-white" />
-                                <a href="tel:+442012345678" className="hover:text-white">+44 20 1234 5678</a>
+                                <a href="sms:+447883320281" className="hover:text-white">Text: +44 7883 320281</a>
                             </li>
                         </ul>
                     </div>
