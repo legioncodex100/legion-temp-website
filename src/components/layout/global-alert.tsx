@@ -21,7 +21,7 @@ export function GlobalAlert() {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="bg-accent/10 border-b border-accent/20 relative z-50 backdrop-blur-sm"
+                className="fixed top-20 lg:top-24 left-0 right-0 z-40 bg-accent/90 border-b border-accent/20 backdrop-blur-md shadow-lg"
             >
                 <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center justify-between gap-4">
                     <Link href="/timetable" className="flex-1 flex items-center justify-center gap-3 group">
