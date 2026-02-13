@@ -5,8 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const IMAGES = [
-    const IMAGES = [
-    { src: "/images/youth-training.png", alt: "Youth Wrestling Training" },
     { src: "/images/boys-wrestling/boys-wrestling-competition_3.jpeg", alt: "Boys Wrestling Competition" },
     { src: "/images/boys-bjj/sparring.jpg", alt: "Boys BJJ Sparring" },
     { src: "/images/girls-bjj/girls-bjj-class_1.jpeg", alt: "Girls Jiu Jitsu Class" },
